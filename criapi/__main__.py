@@ -80,28 +80,32 @@ class Cricbuzz():
         page=self.scrape_url(url)
         tables=page.find_all('table')
         batsmen=[]
-        batsmen_rows=tables[0].find_all('tr')
-        for batsmen_row in batsmen_rows[1:]:
-            dict={}
-            columns=batsmen_row.get_text(';').split(';')
-            dict['name']=columns[0]
-            dict['runs']=columns[1]
-            dict['balls']=columns[2][1:-1]
-            dict['fours']=columns[3]
-            dict['six']=columns[4]
-            dict['sr']=columns[5]
-            batsmen.append(dict)
         bowler=[]
-        bowler_rows=tables[1].find_all('tr')
-        for bowler_row in bowler_rows[1:]:
-            dict={}
-            columns=bowler_row.get_text(';').split(';')
-            dict['name']=columns[0]
-            dict['overs']=columns[1]
-            dict['maidens']=columns[2]
-            dict['runs']=columns[3]
-            dict['wickets']=columns[4]
-            bowler.append(dict)
+        try:
+            batsmen_rows=tables[0].find_all('tr')
+            for batsmen_row in batsmen_rows[1:]:
+                dict={}
+                columns=batsmen_row.get_text(';').split(';')
+                dict['name']=columns[0]
+                dict['runs']=columns[1]
+                dict['balls']=columns[2][1:-1]
+                dict['fours']=columns[3]
+                dict['six']=columns[4]
+                dict['sr']=columns[5]
+                batsmen.append(dict)
+            bowler_rows=tables[1].find_all('tr')
+            for bowler_row in bowler_rows[1:]:
+                dict={}
+                columns=bowler_row.get_text(';').split(';')
+                dict['name']=columns[0]
+                dict['overs']=columns[1]
+                dict['maidens']=columns[2]
+                dict['runs']=columns[3]
+                dict['wickets']=columns[4]
+                bowler.append(dict)
+        except:
+            bowler=[]
+            batsman=[]
         score={}
         score['batsman']=batsmen
         score['bowler']=bowler
