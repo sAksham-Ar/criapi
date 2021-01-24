@@ -1,0 +1,8 @@
+setup.py
+criapi/__init__.py
+criapi/__main__.py
+criapi.egg-info/PKG-INFO
+criapi.egg-info/SOURCES.txt
+criapi.egg-info/dependency_links.txt
+criapi.egg-info/requires.txt
+criapi.egg-info/top_level.txt
