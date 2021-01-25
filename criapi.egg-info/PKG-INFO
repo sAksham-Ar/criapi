@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: criapi
-Version: 1.0.2
+Version: 1.0.3
 Summary: An API to get cricket scores,scorecards and commentary in python.
 Home-page: https://github.com/sAksham-Ar/criapi
 Author: Saksham Arya

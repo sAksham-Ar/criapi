@@ -29,19 +29,21 @@ class Cricbuzz():
             try:
                 while 1:
                     batting={}
-                    batting['runs']=score[i].split('/')[0]
-                    try:
-                        batting['wickets']=score[i].split('/')[1]
-                    except:
+                    if score[i].split()[-1]=='&':
+                        batting['runs']=score[i].split()[0]
                         batting['wickets']='10'
-                    i+=1
-                    batting['overs']=score[i][2:-1]
-                    dict['batting']['score'].append(batting)
-                    i+=1
-                    if score[i]=='&':
+                        dict['batting']['score'].append(batting)
                         i+=1
-                        continue
                     else:
+                        batting['runs']=score[i].split('/')[0]
+                        try:
+                            batting['wickets']=score[i].split('/')[1]
+                        except:
+                            batting['wickets']='10'
+                        i+=1
+                        batting['overs']=score[i][2:-1]
+                        dict['batting']['score'].append(batting)
+                        i+=1
                         break
                 dict['bowling']['team']=score[i]
 
@@ -51,24 +53,25 @@ class Cricbuzz():
                 except:
                     continue
             try:
-                
+                i+=1
                 dict['bowling']['score']=[]
                 while 1:
                     bowling={}
-                    i+=1
-                    bowling['runs']=score[i].split('/')[0]
-                    try:
-                        bowling['wickets']=score[i].split('/')[1]
-                    except:
+                    if score[i].split()[-1]=='&':
+                        bowling['runs']=score[i].split()[0]
                         bowling['wickets']='10'
-                    i+=1
-                    bowling['overs']=score[i][2:-1]
-                    dict['bowling']['score'].append(bowling)
-                    i+=1
-                    if score[i]=='&':
+                        dict['bowling']['score'].append(bowling)
                         i+=1
-                        continue
                     else:
+                        bowling['runs']=score[i].split('/')[0]
+                        try:
+                            bowling['wickets']=score[i].split('/')[1]
+                        except:
+                            bowling['wickets']='10'
+                        i+=1
+                        bowling['overs']=score[i][2:-1]
+                        dict['bowling']['score'].append(bowling)
+                        i+=1
                         break
             except:
                 dict['bowling']['score']=[{}]
@@ -105,7 +108,7 @@ class Cricbuzz():
                 bowler.append(dict)
         except:
             bowler=[]
-            batsman=[]
+            batsmen=[]
         score={}
         score['batsman']=batsmen
         score['bowler']=bowler
