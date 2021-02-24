@@ -118,12 +118,12 @@ class Cricbuzz():
             dict={}
             try:
                 if comment.text.split()[0].replace('.', '', 1).isdigit() :
-                    dict['over']=comment.text.split()[0]
+                    dict['over']=comment.encode_contents().decode('utf-8').split()[0]
                     dict['comm']=' '.join(comment.text.split()[1:])
                     comm.append(dict)
                 else:
                     dict['over']=None
-                    dict['comm']=comment.text
+                    dict['comm']=comment.encode_contents().decode('utf-8')
                     comm.append(dict)
             except:
                 continue

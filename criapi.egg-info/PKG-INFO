@@ -1,54 +1,12 @@
 Metadata-Version: 2.1
 Name: criapi
-Version: 1.0.3
+Version: 1.0.7
 Summary: An API to get cricket scores,scorecards and commentary in python.
 Home-page: https://github.com/sAksham-Ar/criapi
 Author: Saksham Arya
 Author-email: aryasaksham@gmail.com
 License: GPLv3
-Description: # criapi
-        
-        An API to get cricket scores,scorecards and commentary in python.
-        
-        ## Installation
-        
-        Install it as below:
-        
-        ```bash
-        pip3 install criapi
-        ```
-        
-        ## Usage
-        
-        ### Initialization 
-        
-        ```python
-        from criapi import Cricbuzz
-        c=Cricbuzz()
-        ```
-        
-        ### live scores
-        
-        ```python
-        print(c.livescore())
-        ```
-        
-        ### scorecard
-        
-        ```python
-        print(c.scorecard(id))
-        ```
-        
-        ### commentary
-        
-        ```python
-        print(c.commentary(id))
-        ```
-        
-        
-        
-        
-        
+Description: https://github.com/sAksham-Ar/criapi
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
 Classifier: Programming Language :: Python :: 3
