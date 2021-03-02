@@ -166,7 +166,10 @@ class Cricbuzz():
                 dict['wickets']=columns[4]
                 bowler.append(dict)
             i+=1
-            fow_rows=tables[i].find_all('tr')
+            try:
+                fow_rows=tables[i].find_all('tr')
+            except:
+                fow_rows=[]
             fow=[]
             for fow_row in fow_rows[1:]:
                     dict={}
