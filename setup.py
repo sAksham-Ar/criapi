@@ -5,7 +5,7 @@ README ="https://github.com/sAksham-Ar/criapi"
 # This call to setup() does all the work
 setup(
     name="criapi",
-    version="1.0.8",
+    version="1.0.9",
     description="An API to get cricket scores,scorecards and commentary in python.",
     long_description=README,
     long_description_content_type="text/markdown",

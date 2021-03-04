@@ -134,7 +134,7 @@ class Cricbuzz():
         page=self.scrape_url(url)
         tables=page.find_all('table')
         tables=tables[:-2]
-        i=0
+        i=0y
         scorecard=[]
         while i<len(tables):
             i+=1
