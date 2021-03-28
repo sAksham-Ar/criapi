@@ -30,14 +30,19 @@ class Cricbuzz():
                 while 1:
                     batting={}
                     if score[i].split()[-1]=='&':
-                        batting['runs']=score[i].split()[0]
+                        batting['runs']=score[i].split()[0].strip()
                         batting['wickets']='10'
                         dict['batting']['score'].append(batting)
                         i+=1
                     else:
-                        batting['runs']=score[i].split('/')[0]
+                        batting['runs']=score[i].split('/')[0].strip()
                         try:
-                            batting['wickets']=score[i].split('/')[1]
+                            if score[i].split('/')[1].find("(f"):
+                                batting['follow-on']=True
+                            else:
+                                batting['follow-on']=False
+
+                            batting['wickets']=score[i].split('/')[1].replace('(f','').strip()
                         except:
                             batting['wickets']='10'
                         i+=1
@@ -58,14 +63,19 @@ class Cricbuzz():
                 while 1:
                     bowling={}
                     if score[i].split()[-1]=='&':
-                        bowling['runs']=score[i].split()[0]
+                        bowling['runs']=score[i].split()[0].strip()
                         bowling['wickets']='10'
                         dict['bowling']['score'].append(bowling)
                         i+=1
                     else:
-                        bowling['runs']=score[i].split('/')[0]
+                        bowling['runs']=score[i].split('/')[0].strip()
                         try:
-                            bowling['wickets']=score[i].split('/')[1]
+                            if score[i].split('/')[1].find("(f"):
+                                bowling['follow-on']=True
+                            else:
+                                bowling['follow-on']=False
+
+                            bowling['wickets']=score[i].split('/')[1].replace('(f','').strip()
                         except:
                             bowling['wickets']='10'
                         i+=1
@@ -117,7 +127,7 @@ class Cricbuzz():
         for comment in commentary:
             dict={}
             try:
-                if comment.text.split()[0].replace('.', '', 1).isdigit() :
+                if len(comment.text.split()[0].split('.'))==2:
                     dict['over']=comment.encode_contents().decode('utf-8').split()[0]
                     dict['comm']=' '.join(comment.text.split()[1:])
                     comm.append(dict)
